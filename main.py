@@ -13,7 +13,7 @@ import urllib
 from model import User
 
 host_server = os.environ.get('host_server', 'localhost')
-db_server_port = urllib.parse.quote_plus(str(os.environ.get('db_server_port', '5432')))
+db_server_port = urllib.parse.quote_plus(str(os.environ.get('db_server_port', '8000')))
 database_name = os.environ.get('database_name', 'fastapi')
 db_username = urllib.parse.quote_plus(str(os.environ.get('db_username', 'postgres')))
 db_password = urllib.parse.quote_plus(str(os.environ.get('db_password', 'secret')))
