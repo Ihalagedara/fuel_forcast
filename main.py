@@ -20,10 +20,19 @@ db_password = urllib.parse.quote_plus(str(os.environ.get('db_password', 'secret'
 ssl_mode = urllib.parse.quote_plus(str(os.environ.get('ssl_mode','prefer')))
 DATABASE_URL = 'postgresql://{}:{}@{}:{}/{}?sslmode={}'.format(db_username, db_password, host_server, db_server_port, database_name, ssl_mode)
 
-d = databases.Database(DATABASE_URL)
+database = databases.Database(DATABASE_URL)
 
 
 app =  FastAPI()
+
+@app.on_event("startup")
+async def startup():
+    await database.connect()
+
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()
+
 
 
 
@@ -32,7 +41,7 @@ async def filter_fuel_less_30():
     i = 0
     count = 0
     for i in range(len(d)):
-        if d[i].Remaining_Fuel_Quantity <= 30:
+        if database[i].Remaining_Fuel_Quantity <= 30:
             count = count+1
 
     return count
@@ -42,7 +51,7 @@ async def filter_fuel_less_100():
     i = 0
     count = 0
     for i in range(len(d)):
-        if d[i].Remaining_Fuel_Quantity <= 100 & d[i].Remaining_Fuel_Quantity >30:
+        if database[i].Remaining_Fuel_Quantity <= 100 & d[i].Remaining_Fuel_Quantity >30:
             count = count+1
 
     return count
@@ -53,7 +62,7 @@ async def filter_fuel_less_200():
     i = 0
     count = 0
     for i in range(len(d)):
-        if d[i].Remaining_Fuel_Quantity <= 200 & d[i].Remaining_Fuel_Quantity >100:
+        if database[i].Remaining_Fuel_Quantity <= 200 & d[i].Remaining_Fuel_Quantity >100:
             count = count+1
 
     return count
@@ -62,11 +71,11 @@ async def filter_fuel_less_200():
 async def get_site(Site_id:str):
     i=0
     for i in range(len(d)):
-        if d[i].Site_ID == Site_id:
+        if database[i].Site_ID == Site_id:
             break
 
 
-    return d[i].Site_Name
+    return database[i].Site_Name
 
 
 
