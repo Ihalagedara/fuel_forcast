@@ -1,7 +1,6 @@
 
 import os
 from pyexpat import model
-from data import d
 from typing import List
 import databases
 import sqlalchemy
