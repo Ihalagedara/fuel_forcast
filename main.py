@@ -55,7 +55,9 @@ app.add_middleware(
 )
 app.add_middleware(GZipMiddleware)
 
-
+@app.get()
+async def first():
+    return ("Hello" : "World")
 
 
 @app.get("/filter_less_30")
