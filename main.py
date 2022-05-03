@@ -1,10 +1,6 @@
 from typing import List
 import databases
-import sqlalchemy
-from fastapi import FastAPI, status
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.middleware.gzip import GZipMiddleware
-from pydantic import BaseModel
+from fastapi import FastAPI
 import os
 import urllib
 
@@ -20,30 +16,7 @@ DATABASE_URL = 'postgresql://{}:{}@{}:{}/{}?sslmode={}'.format(db_username, db_p
 
 database = databases.Database(DATABASE_URL)
 
-metadata = sqlalchemy.MetaData()
 
-notes = sqlalchemy.Table(
-    "notes",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("text", sqlalchemy.String),
-    sqlalchemy.Column("completed", sqlalchemy.Boolean),
-)
-
-engine = sqlalchemy.create_engine(
-    #DATABASE_URL, connect_args={"check_same_thread": False}
-    DATABASE_URL, pool_size=3, max_overflow=0
-)
-metadata.create_all(engine)
-
-class NoteIn(BaseModel):
-    text: str
-    completed: bool
-
-class Note(BaseModel):
-    id: int
-    text: str
-    completed: bool
 
 
 
