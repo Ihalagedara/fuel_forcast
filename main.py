@@ -34,7 +34,7 @@ async def filter_fuel_less_30():
         if database[i].Remaining_Fuel_Quantity <= 30:
             count = count+1
 
-    return {"count":count}
+    return {"count":str(count)}
 
 @app.get("/filter_less_100")
 async def filter_fuel_less_100():
@@ -44,7 +44,7 @@ async def filter_fuel_less_100():
         if database[i].Remaining_Fuel_Quantity <= 100 & database[i].Remaining_Fuel_Quantity >30:
             count = count+1
 
-    return {"count":count}
+    return {"count":str(count)}
 
 
 @app.get("/filter_less_200")
@@ -55,7 +55,7 @@ async def filter_fuel_less_200():
         if database[i].Remaining_Fuel_Quantity <= 200 & database[i].Remaining_Fuel_Quantity >100:
             count = count+1
 
-    return {"count":count}
+    return {"count":str(count)}
 
 @app.get("/site/{Site_id}")
 async def get_site(Site_id:str):
