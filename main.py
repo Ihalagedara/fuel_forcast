@@ -4,7 +4,6 @@ from fastapi import FastAPI
 import os
 import urllib
 
-#DATABASE_URL = "sqlite:///./test.db"
 
 host_server = os.environ.get('host_server', 'localhost')
 db_server_port = urllib.parse.quote_plus(str(os.environ.get('db_server_port', '8000')))
@@ -23,7 +22,7 @@ app = FastAPI()
 
 @app.get("/")
 async def first():
-    return {"Hello" : "World"}
+    return {"Hello" : "Test"}
 
 
 @app.get("/filter_less_30")
@@ -65,4 +64,4 @@ async def get_site(Site_id:str):
             break
 
 
-    return {"database":database[i]}
+    return database[i]
