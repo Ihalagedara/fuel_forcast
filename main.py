@@ -21,7 +21,7 @@ database = databases.Database(DATABASE_URL)
 app = FastAPI()
 
 
-@app.get()
+@app.get("/")
 async def first():
     return {"Hello" : "World"}
 
