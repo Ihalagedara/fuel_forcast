@@ -125,7 +125,7 @@ async def first():
 async def filter_fuel_less_30(skip: int = 0, take: int = 20):
     query = fuel.select().offset(skip).limit(take)
 
-    return await database.fetch_all(query)
+    return database.fetch_all(query)
 
 @app.get("/filter_less_100")
 async def filter_fuel_less_100():
