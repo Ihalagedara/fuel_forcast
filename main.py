@@ -25,43 +25,27 @@ async def first():
     return {"Hello" : "Test"}
 
 
-@app.get("/filter_less_30", response_model=List[database], status_code = status.HTTP_200_OK)
+@app.get("/filter_less_30")
 async def filter_fuel_less_30():
-    i = 0
-    count = 0
-    for i in range(len(database)):
-        if database[i].Remaining_Fuel_Quantity <= 30:
-            count = count+1
+    
 
     return {"Hello" : "Test1"}
 
 @app.get("/filter_less_100")
 async def filter_fuel_less_100():
-    i = 0
-    count = 0
-    for i in range(len(database)):
-        if database[i].Remaining_Fuel_Quantity <= 100 & database[i].Remaining_Fuel_Quantity >30:
-            count = count+1
+    
 
     return {"Hello" : "Test2"}
 
 
 @app.get("/filter_less_200")
 async def filter_fuel_less_200():
-    i = 0
-    count = 0
-    for i in range(len(database)):
-        if database[i].Remaining_Fuel_Quantity <= 200 & database[i].Remaining_Fuel_Quantity >100:
-            count = count+1
+    
 
     return {"Hello" : "Test3"}
 
 @app.get("/site/{Site_id}")
 async def get_site(Site_id:str):
-    i=0
-    for i in range(len(database)):
-        if database[i].Site_ID == Site_id:
-            break
-
+    
 
     return {"Hello" : "Test4"}
