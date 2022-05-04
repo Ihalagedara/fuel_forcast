@@ -33,7 +33,7 @@ async def filter_fuel_less_30():
         if database[i].Remaining_Fuel_Quantity <= 30:
             count = count+1
 
-    return {"count":str(count)}
+    return str(count)
 
 @app.get("/filter_less_100")
 async def filter_fuel_less_100():
