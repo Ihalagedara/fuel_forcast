@@ -1,6 +1,6 @@
 from typing import List
 import databases
-from fastapi import FastAPI
+from fastapi import FastAPI, status
 import os
 import urllib
 
@@ -25,7 +25,7 @@ async def first():
     return {"Hello" : "Test"}
 
 
-@app.get("/filter_less_30")
+@app.get("/filter_less_30", response_model=List[database], status_code = status.HTTP_200_OK)
 async def filter_fuel_less_30():
     i = 0
     count = 0
