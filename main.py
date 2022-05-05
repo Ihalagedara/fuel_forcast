@@ -1,7 +1,6 @@
-from typing import List
+
 import databases
 import sqlalchemy
-from sqlalchemy.ext.asyncio import create_async_engine
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
@@ -9,22 +8,22 @@ from pydantic import BaseModel
 import os
 import urllib
 
+#DATABASE_URL = "sqlite:///./test.db"
 
 host_server = os.environ.get('host_server', 'localhost')
-db_server_port = urllib.parse.quote_plus(str(os.environ.get('db_server_port', '8000')))
+db_server_port = urllib.parse.quote_plus(str(os.environ.get('db_server_port', '5432')))
 database_name = os.environ.get('database_name', 'fastapi')
-db_username = urllib.parse.quote_plus(str(os.environ.get('db_username', 'Shamil')))
-db_password = urllib.parse.quote_plus(str(os.environ.get('db_password', 'Bandara@123')))
+db_username = urllib.parse.quote_plus(str(os.environ.get('db_username', 'postgres')))
+db_password = urllib.parse.quote_plus(str(os.environ.get('db_password', 'secret')))
 ssl_mode = urllib.parse.quote_plus(str(os.environ.get('ssl_mode','prefer')))
-DATABASE_URL = 'mysql://{}:{}@{}/{}?port={}'.format(db_username, db_password, host_server, database_name, db_server_port)
-
+DATABASE_URL = 'postgresql://{}:{}@{}:{}/{}?sslmode={}'.format(db_username, db_password, host_server, db_server_port, database_name, ssl_mode)
 
 database = databases.Database(DATABASE_URL)
 
 metadata = sqlalchemy.MetaData()
 
 fuel = sqlalchemy.Table(
-    "fuel_forcast",
+    "Fuel-Forcast-CNR",
     metadata,
     sqlalchemy.Column("Site_ID", sqlalchemy.String, primary_key=True),
     sqlalchemy.Column("Site_Name", sqlalchemy.String),
@@ -57,7 +56,10 @@ fuel = sqlalchemy.Table(
 
 )
 
-engine = create_async_engine(DATABASE_URL, future=True, echo=True)
+engine = sqlalchemy.create_engine(
+    #DATABASE_URL, connect_args={"check_same_thread": False}
+    DATABASE_URL, pool_size=3, max_overflow=0
+)
 metadata.create_all(engine)
 
 
@@ -120,11 +122,7 @@ async def first():
     return {"Hello" : "Test"}
 
 
-@app.get("/getdata",response_model=List[Fuel], status_code = status.HTTP_200_OK)
-async def filter_fuel_less_30(skip: int = 0, take: int = 20):
-    query = fuel.select().offset(skip).limit(take)
 
-    return database.fetch_all(query)
 
 @app.get("/filter_less_100")
 async def filter_fuel_less_100():
