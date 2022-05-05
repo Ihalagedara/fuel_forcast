@@ -16,7 +16,9 @@ database_name = os.environ.get('database_name', 'fastapi')
 db_username = urllib.parse.quote_plus(str(os.environ.get('db_username', 'postgres')))
 db_password = urllib.parse.quote_plus(str(os.environ.get('db_password', 'secret')))
 ssl_mode = urllib.parse.quote_plus(str(os.environ.get('ssl_mode','prefer')))
-DATABASE_URL = 'mysql://{}:{}@{}:{}/{}'.format(db_username, db_password, host_server, db_server_port, database_name)
+DATABASE_URL = 'mysql://{}:{}@{}:{}/{}?sslmode={}'.format(db_username, db_password, host_server, db_server_port, database_name, ssl_mode)
+DATABASE_URL_1 = 'mysql://{}:{}@{}:{}/{}'.format(db_username, db_password, host_server, db_server_port, database_name)
+
 
 database = databases.Database(DATABASE_URL)
 
@@ -107,7 +109,7 @@ async def startup():
 async def shutdown():
     await database.disconnect()
 
-engine = sqlalchemy.create_engine(DATABASE_URL)
+engine = sqlalchemy.create_engine(DATABASE_URL_1)
 metadata.create_all(engine)
 
 app = FastAPI()
