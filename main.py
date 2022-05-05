@@ -15,7 +15,7 @@ database_name = os.environ.get('database_name', 'fastapi')
 db_username = urllib.parse.quote_plus(str(os.environ.get('db_username', 'Shamil')))
 db_password = urllib.parse.quote_plus(str(os.environ.get('db_password', 'Bandara@123')))
 ssl_mode = urllib.parse.quote_plus(str(os.environ.get('ssl_mode','prefer')))
-DATABASE_URL = 'mysql+pymysql://{}:{}@{}/{}?port={}?charset=utf8'.format(db_username, db_password, host_server, database_name, db_server_port)
+DATABASE_URL = 'mysql://{}:{}@{}/{}?port={}?charset=utf8'.format(db_username, db_password, host_server, database_name, db_server_port)
 
 database = databases.Database(DATABASE_URL)
 
