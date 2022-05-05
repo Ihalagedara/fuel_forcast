@@ -107,7 +107,7 @@ async def startup():
 async def shutdown():
     await database.disconnect()
 
-engine = sqlalchemy.create_engine('mysql://scott:tiger@localhost/foo')
+engine = sqlalchemy.create_engine(DATABASE_URL)
 metadata.create_all(engine)
 
 app = FastAPI()
