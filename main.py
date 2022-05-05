@@ -114,7 +114,7 @@ app = FastAPI()
 
 @app.get("/")
 async def first():
-    return {"Hello" : "Test"}
+    return {"Hello" : "Testing for updates"}
 
 
 @app.get("/getdata",response_model=List[Fuel], status_code = status.HTTP_200_OK)
