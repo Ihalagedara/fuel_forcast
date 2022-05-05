@@ -53,7 +53,11 @@ async def first():
     return {"Hello" : "Test"}
 
 
+@app.get("/getdata",response_model=List[Fuel], status_code = status.HTTP_200_OK)
+async def filter_fuel_less_30(skip: int = 0, take: int = 20):
+    query = fuel.select().offset(skip).limit(take)
 
+    return database.fetch_all(query)
 
 @app.get("/filter_less_100")
 async def filter_fuel_less_100():
