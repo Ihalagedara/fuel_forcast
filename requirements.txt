@@ -13,3 +13,4 @@ websockets==8.1
 uvloop==0.16.0
 data==0.4
 httptools==0.4.0 
+aiomysql==0.1.0 
