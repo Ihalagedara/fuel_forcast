@@ -1,6 +1,7 @@
 from typing import List
 import databases
 import sqlalchemy
+from sqlalchemy.ext.asyncio import create_async_engine
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
@@ -56,10 +57,7 @@ fuel = sqlalchemy.Table(
 
 )
 
-engine = sqlalchemy.create_engine(
-    #DATABASE_URL, connect_args={"check_same_thread": False}
-    DATABASE_URL, pool_size=3, max_overflow=0
-)
+engine = create_async_engine(DATABASE_URL, future=True, echo=True)
 metadata.create_all(engine)
 
 
