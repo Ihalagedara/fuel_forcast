@@ -107,14 +107,15 @@ async def startup():
 async def shutdown():
     await database.disconnect()
 
-
+engine = sqlalchemy.create_engine('mysql://scott:tiger@localhost/foo')
+metadata.create_all(engine)
 
 app = FastAPI()
 
 
 @app.get("/")
 async def first():
-    return {"Hello" : "Testing for updates"}
+    return {"Hello" : "Testing for updates in engine"}
 
 
 @app.get("/getdata",response_model=List[Fuel], status_code = status.HTTP_200_OK)
