@@ -1,7 +1,6 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.middleware.gzip import GZipMiddleware
 import pyodbc
+
 
 server = 'shamil.database.windows.net'
 database = 'fuelforcast'
@@ -13,31 +12,32 @@ with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE=
     with conn.cursor() as cursor:
         cursor.execute("SELECT TOP (1000) * FROM [dbo].[Fuel-Forecast-CNR]")
         row = cursor.fetchall()
-        #print(row[0][1])
+        #print(row[0][23])
 
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
-app.add_middleware(GZipMiddleware)
-
-@app.on_event("startup")
-async def startup():
-    await database.connect()
-
-@app.on_event("shutdown")
-async def shutdown():
-    await database.disconnect()
 
 
 @app.get("/")
+def less30():
+    count =0
+    for i in range(len(row)):
+        if row[i][23]<50:
+            count = count+1
+            i=i+1
+        else:
+            i=i+1
+
+
+    return count
+
+
+    
+    
+
+@app.get("/first")
 async def first():
-    return row[0][1]
+    return row[0][2]
 
 
