@@ -31,12 +31,37 @@ async def first():
 async def less30():
     count =0
     for i in range(len(row)):
-        if row[i][23]<50:
+        if row[i][23]<=50:
             count = count+1
             i=i+1
         else:
             i=i+1
     return count
+
+
+@app.get("/less100")
+async def less100():
+    count =0
+    for i in range(len(row)):
+        if row[i][23]>50 & row[i][23]<=100:
+            count = count+1
+            i=i+1
+        else:
+            i=i+1
+    return count
+
+
+@app.get("/other")
+async def other():
+    count =0
+    for i in range(len(row)):
+        if row[i][23]>100:
+            count = count+1
+            i=i+1
+        else:
+            i=i+1
+    return count
+
 
 @app.get("/site/{siteId}")
 async def site(siteId):
