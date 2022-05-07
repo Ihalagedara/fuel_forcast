@@ -36,7 +36,7 @@ async def less30():
             i=i+1
         else:
             i=i+1
-    return count
+    return {"count":str(count)}
 
 
 @app.get("/less100")
