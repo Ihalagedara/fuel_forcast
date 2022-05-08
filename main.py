@@ -31,7 +31,7 @@ async def first():
 async def less30():
     count =0
     for i in range(len(row)):
-        if row[i][23]<=50:
+        if row[i][23]<=30:
             count = count+1
             i=i+1
         else:
@@ -43,7 +43,7 @@ async def less30():
 async def less100():
     count =0
     for i in range(len(row)):
-        if row[i][23]>50 & row[i][23]<=100:
+        if row[i][23]>30 & row[i][23]<=100:
             count = count+1
             i=i+1
         else:
@@ -79,5 +79,48 @@ async def site(siteId):
     print(details)
     return details
 
+@app.get("/details/{type}")
+async def det(type):
+    if type == "urgent":
+        list1 = []
+        list2 = []
+        for i in range(len(row)):
+            if row[i][23]<=30:
+                list1.append(row[i][0])
+                list1.append(row[i][1])
+                list1.append(row[i][8])
+                list1.append(row[i][10])
+                i=i+1
+            else:
+                i=i+1
+            list2.append(list1)
 
+    elif type == "critical":
+        list1 = []
+        list2 = []
+        for i in range(len(row)):
+            if row[i][23]>30 & row[i][23]<=100:
+                list1.append(row[i][0])
+                list1.append(row[i][1])
+                list1.append(row[i][8])
+                list1.append(row[i][10])
+                i=i+1
+            else:
+                i=i+1
+            list2.append(list1)
 
+    elif type == "other":
+        list1 = []
+        list2 = []
+        for i in range(len(row)):
+            if row[i][23]>100:
+                list1.append(row[i][0])
+                list1.append(row[i][1])
+                list1.append(row[i][8])
+                list1.append(row[i][10])
+                i=i+1
+            else:
+                i=i+1
+            list2.append(list1)
+
+    return list2
