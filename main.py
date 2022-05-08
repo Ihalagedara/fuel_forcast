@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.responses import JSONResponse
 import pyodbc
 
 
@@ -67,7 +68,7 @@ async def less30():
             i=i+1
         else:
             i=i+1
-    return {"count":str(count)}
+    return JSONResponse(content=count)
 
 
 @app.get("/less100")
