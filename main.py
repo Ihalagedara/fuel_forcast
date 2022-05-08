@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 import pyodbc
 
 
@@ -17,6 +18,36 @@ with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE=
 keys = ["Site_ID","Site_Name","Region","New_Region","Depot","Tower_Category","Energy_category","Entity","Site_category","Rectification_Rank","New_Rectification_Rank","Site_Cabin_Type","STBG_FTG_Status","Gen_brand_1","Gen_Capacity_1","Gen_Brand_2","Gen_Capacity_2","Fuel_Tank_Capacity","FuelConsumption_Fuel_consumption","FuelFilled1_Date","FuelFilled1_Filled_Fuel_Qty_L","RunningHr_TotalGenRunning","RegionaUpdate_STBG_FTG_Status","Remaining_Fuel_Quantity","Required_Fuel_Amount_for_Next_5_Day","Next_Filling_Date","Remark","RegionaUpdate_STBG_FTG_Status2"]
 
 details = {}
+
+class details(BaseModel):
+    Site_ID: str
+    Site_Name: str
+    Region: str
+    New_Region: str
+    Depot: str
+    Tower_Category: str 
+    Energy_category: str
+    Entity: str
+    Site_category: str
+    Rectification_Rank: str
+    New_Rectification_Rank: str
+    Site_Cabin_Type: str
+    STBG_FTG_Status: str
+    Gen_brand_1: str
+    Gen_Capacity_1: str
+    Gen_Brand_2: str
+    Gen_Capacity_2: str
+    Fuel_Tank_Capacity: str
+    FuelConsumption_Fuel_consumption: str
+    FuelFilled1_Date: str
+    FuelFilled1_Filled_Fuel_Qty_L: str
+    RunningHr_TotalGenRunning: str
+    RegionaUpdate_STBG_FTG_Status: str
+    Remaining_Fuel_Quantity: str
+    Required_Fuel_Amount_for_Next_5_Day: str
+    Next_Filling_Date: str
+    Remark: str
+    RegionaUpdate_STBG_FTG_Status2: str
 
 
 app = FastAPI()
@@ -76,7 +107,7 @@ async def site(siteId):
             details[ keys[j] == "N/A" ]
         else:
             details[keys[j]] = str(row[i][j]) 
-    print(details)
+    
     return details
 
 @app.get("/details/{type}")
