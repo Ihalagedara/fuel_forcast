@@ -110,7 +110,7 @@ async def site(siteId):
         else:
             details[keys[j]] = str(row[i][j]) 
     
-    return JSONResponse(details)
+    return details
 
 @app.get("/details/{type}")
 async def det(type):
