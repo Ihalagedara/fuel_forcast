@@ -127,14 +127,14 @@ async def det(type):
             list2.append(list1)
 
     elif type == "critical":
-        list1 = []
-        list2 = []
+        list1 = {}
+        list2 = {}
         for i in range(len(row)):
             if row[i][23]>30 & row[i][23]<=100:
-                list1.append(row[i][0])
-                list1.append(row[i][1])
-                list1.append(row[i][8])
-                list1.append(row[i][10])
+                list1["SIte_ID"] = (row[i][0])
+                list1["Site_Name"] = (row[i][1])
+                list1["Site_catogary"] = (row[i][8])
+                list1["Rank"] = (row[i][10])
                 i=i+1
             else:
                 i=i+1
