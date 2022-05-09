@@ -18,7 +18,7 @@ with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE=
 
 keys = ["Site_ID","Site_Name","Region","New_Region","Depot","Tower_Category","Energy_category","Entity","Site_category","Rectification_Rank","New_Rectification_Rank","Site_Cabin_Type","STBG_FTG_Status","Gen_brand_1","Gen_Capacity_1","Gen_Brand_2","Gen_Capacity_2","Fuel_Tank_Capacity","FuelConsumption_Fuel_consumption","FuelFilled1_Date","FuelFilled1_Filled_Fuel_Qty_L","RunningHr_TotalGenRunning","RegionaUpdate_STBG_FTG_Status","Remaining_Fuel_Quantity","Required_Fuel_Amount_for_Next_5_Day","Next_Filling_Date","Remark","RegionaUpdate_STBG_FTG_Status2"]
 
-detail = {}
+details = []
 
 
 class details(BaseModel):
@@ -97,7 +97,7 @@ async def other():
 
 
 @app.get("/site/{siteId}")
-async def site(siteId, detail : details):
+async def site(siteId):
     
     for i in range(len(row)):
         if str(row[i][0]) == str(siteId):
@@ -107,11 +107,11 @@ async def site(siteId, detail : details):
 
     for j in range(28):
         if str(row[i][j])=="":
-            detail[keys[j]] = "N/A"
+            details[keys[j]] = "N/A"
         else:
-            detail[keys[j]] = str(row[i][j]) 
+            details[keys[j]] = str(row[i][j]) 
     
-    return detail
+    return JSONResponse(details)
 
 @app.get("/details/{type}")
 async def det(type):
