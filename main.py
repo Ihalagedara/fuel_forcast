@@ -106,53 +106,60 @@ async def site(siteId):
             i=i+1
 
     for j in range(28):
-        details[keys[j]] = row[i][j]
+        if row[i][j] == "null":
+            details[keys[j]] = "N/A"
+        else:
+            details[keys[j]] = row[i][j]
     
     return details
 
 @app.get("/details/{type}")
 async def det(type):
+    
+    list2 = {}
     if type == "urgent":
-        list1 = []
-        list2 = []
+        
         for i in range(len(row)):
             if row[i][23]<=30:
-                list1.append(row[i][0])
-                list1.append(row[i][1])
-                list1.append(row[i][8])
-                list1.append(row[i][10])
-                i=i+1
-            else:
-                i=i+1
-            list2.append(list1)
-
-    elif type == "critical":
-        list1 = {}
-        list2 = {}
-        for i in range(len(row)):
-            if row[i][23]>30 & row[i][23]<=100:
+                list1 = {}
                 list1["SIte_ID"] = str(row[i][0])
                 list1["Site_Name"] = str(row[i][1])
                 list1["Site_catogary"] = str(row[i][8])
                 list1["Rank"] = str(row[i][10])
-                list2["site"+1] = list1
+                list2["site"+i] = list1
+                i=i+1
+            else:
+                i=i+1
+            
+
+    elif type == "critical":
+       
+        for i in range(len(row)):
+            if row[i][23]>30 & row[i][23]<=100:
+                list1 = {}
+                list1["SIte_ID"] = str(row[i][0])
+                list1["Site_Name"] = str(row[i][1])
+                list1["Site_catogary"] = str(row[i][8])
+                list1["Rank"] = str(row[i][10])
+                list2["site"+i] = list1
                 i=i+1
             else:
                 i=i+1
             
 
     elif type == "other":
-        list1 = []
-        list2 = []
+        
         for i in range(len(row)):
             if row[i][23]>100:
-                list1.append(row[i][0])
-                list1.append(row[i][1])
-                list1.append(row[i][8])
-                list1.append(row[i][10])
+                list1 = {}
+                list1["SIte_ID"] = str(row[i][0])
+                list1["Site_Name"] = str(row[i][1])
+                list1["Site_catogary"] = str(row[i][8])
+                list1["Rank"] = str(row[i][10])
+                list2["site"+i] = list1
                 i=i+1
             else:
                 i=i+1
-            list2.append(list1)
+            
 
     return list2
