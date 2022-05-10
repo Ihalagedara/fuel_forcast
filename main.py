@@ -116,7 +116,7 @@ async def site(siteId):
 @app.get("/details/{type}")
 async def det(type):
     
-    list2 = {}
+    list2 = []
     if type == "urgent":
         
         for i in range(len(row)):
@@ -141,7 +141,7 @@ async def det(type):
                 list1["Site_Name"] = row[i][1]
                 list1["Site_catogary"] = row[i][8]
                 list1["Rank"] = row[i][10]
-                list2["site"+i] = list1
+                list2.append(list)
                 i=i+1
             else:
                 i=i+1
