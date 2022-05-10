@@ -98,7 +98,7 @@ async def other():
 
 @app.get("/site/{siteId}")
 async def site(siteId):
-    details = []
+    details = {}
     for i in range(len(row)):
         if str(row[i][0]) == str(siteId):
             break
@@ -106,10 +106,7 @@ async def site(siteId):
             i=i+1
 
     for j in range(28):
-        if str(row[i][j])=="":
-            details.append("N/A")
-        else:
-            details.append(str(row[i][j]))
+        details[keys[j]] = row[i][j]
     
     return details
 
