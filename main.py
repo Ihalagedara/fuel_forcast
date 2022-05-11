@@ -109,7 +109,7 @@ async def site(siteId):
         if row[i][j] == "null":
             details[keys[j]] = "N/A"
         else:
-            details[keys[j]] = row[i][j]
+            details[keys[j]] = str(row[i][j])
     
     return details
 
