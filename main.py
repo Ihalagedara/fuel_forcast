@@ -76,7 +76,7 @@ async def less30():
 async def less100():
     count =0
     for i in range(len(row)):
-        if row[i][23]>30 & row[i][23]<=100:
+        if row[i][23]>30 and row[i][23]<=100:
             count = count+1
             i=i+1
         else:
@@ -135,7 +135,7 @@ async def det(type):
     elif type == "urgent":
        
         for i in range(len(row)):
-            if row[i][23]>30 & row[i][23]<=100:
+            if row[i][23]>30 and row[i][23]<=100:
                 list1 = []
                 list1.append(str(row[i][0]))
                 list1.append(str(row[i][1]))
