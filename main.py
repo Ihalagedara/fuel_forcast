@@ -81,6 +81,15 @@ async def less30(region,depot):
                 i=i+1
         return count
 
+    elif region != "All" and depot == "All":
+        for i in range(len(row)):
+            if  row[i][23]<=30 and str(row[i][3]) == str(region):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
+
     elif region != "All" and depot != "All":
         for i in range(len(row)):
             if row[i][23]<=30 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
@@ -115,6 +124,15 @@ async def less100(region,depot):
                 i=i+1
         return count
 
+    elif region != "All" and depot == "All":
+        for i in range(len(row)):
+            if row[i][23]>30 and row[i][23]<=100 and str(row[i][3]) == str(region):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
+
     elif region != "All" and depot != "All":
         for i in range(len(row)):
             if row[i][23]>30 and row[i][23]<=100 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
@@ -140,6 +158,15 @@ async def other(region,depot):
     elif region == "All" and depot != "All":
         for i in range(len(row)):
             if row[i][23]>100 and str(row[i][4]) == str(depot):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
+
+    elif region != "All" and depot == "All":
+        for i in range(len(row)):
+            if row[i][23]>100 and str(row[i][3]) == str(region):
                 count = count+1
                 i=i+1
             else:
