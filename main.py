@@ -224,3 +224,11 @@ async def det(type):
             
 
     return list2
+
+@app.get("/regions")
+async def regions():
+    list = []
+    for i in range(len(row)):
+        list.append(row[i][3])
+
+    return list
