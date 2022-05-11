@@ -126,7 +126,7 @@ async def det(type):
                 list1["Site_Name"] = str(row[i][1])
                 list1["Site_catogary"] = str(row[i][8])
                 list1["Rank"] = str(row[i][10])
-                list2["site"+str(i)] = list[list1]
+                list2["site"+str(i)] = list1
                 
             
             
