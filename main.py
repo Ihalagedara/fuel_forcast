@@ -122,14 +122,13 @@ async def det(type):
         for i in range(len(row)):
             if row[i][23]<=30:
                 list1 = {}
-                list1["SIte_ID"] = row[i][0]
-                list1["Site_Name"] = row[i][1]
-                list1["Site_catogary"] = row[i][8]
-                list1["Rank"] = row[i][10]
-                list2["site"+i] = list1
-                i=i+1
-            else:
-                i=i+1
+                list1["SIte_ID"] = str(row[i][0])
+                list1["Site_Name"] = str(row[i][1])
+                list1["Site_catogary"] = str(row[i][8])
+                list1["Rank"] = str(row[i][10])
+                list2["site"+str(i)] = list1
+                
+            
             
 
     elif type == "critical":
@@ -137,14 +136,12 @@ async def det(type):
         for i in range(len(row)):
             if row[i][23]>30 & row[i][23]<=100:
                 list1 = {}
-                list1["SIte_ID"] = row[i][0]
-                list1["Site_Name"] = row[i][1]
-                list1["Site_catogary"] = row[i][8]
-                list1["Rank"] = row[i][10]
-                list2.append(list)
-                i=i+1
-            else:
-                i=i+1
+                list1["SIte_ID"] = str(row[i][0])
+                list1["Site_Name"] = str(row[i][1])
+                list1["Site_catogary"] = str(row[i][8])
+                list1["Rank"] = str(row[i][10])
+                list2["site"+str(i)] = list1
+                
             
 
     elif type == "other":
@@ -152,14 +149,12 @@ async def det(type):
         for i in range(len(row)):
             if row[i][23]>100:
                 list1 = {}
-                list1["SIte_ID"] = row[i][0]
-                list1["Site_Name"] = row[i][1]
-                list1["Site_catogary"] = row[i][8]
-                list1["Rank"] = row[i][10]
-                list2["site"+i] = list1
-                i=i+1
-            else:
-                i=i+1
+                list1["SIte_ID"] = str(row[i][0])
+                list1["Site_Name"] = str(row[i][1])
+                list1["Site_catogary"] = str(row[i][8])
+                list1["Rank"] = str(row[i][10])
+                list2["site"+str(i)] = list1
+                
             
 
     return list2
