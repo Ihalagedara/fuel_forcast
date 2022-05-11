@@ -230,5 +230,13 @@ async def regions():
     list = []
     for i in range(len(row)):
         list.append(row[i][3])
+    mylist = list(dict.fromkeys(list))
+    return mylist
 
-    return list
+@app.get("/deports")
+async def regions():
+    list = []
+    for i in range(len(row)):
+        list.append(row[i][4])
+    mylist = list(dict.fromkeys(list))
+    return mylist
