@@ -127,6 +127,7 @@ async def det(type):
                 list1.append(str(row[i][8]))
                 list1.append(str(row[i][9]))
                 list1.append(str(row[i][4]))
+                list1.append(str(row[i][3]))
                 list2.append(list1)
                 
             
@@ -142,6 +143,7 @@ async def det(type):
                 list1.append(str(row[i][8]))
                 list1.append(str(row[i][9]))
                 list1.append(str(row[i][4]))
+                list1.append(str(row[i][3]))
                 list2.append(list1)
                 
             
@@ -156,6 +158,7 @@ async def det(type):
                 list1.append(str(row[i][8]))
                 list1.append(str(row[i][9]))
                 list1.append(str(row[i][4]))
+                list1.append(str(row[i][3]))
                 list2.append(list1)
                 
             
