@@ -60,40 +60,100 @@ async def first():
     return {"Data":"Base"}
 
 
-@app.get("/less30")
-async def less30():
+@app.get("/less30/{region}/{depot}")
+async def less30(region,depot):
     count =0
-    for i in range(len(row)):
-        if row[i][23]<=30:
-            count = count+1
-            i=i+1
-        else:
-            i=i+1
-    return count
+    if region == "All" and depot == "All":
+        for i in range(len(row)):
+            if row[i][23]<=30:
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
+
+    elif region == "All" and depot != "All":
+        for i in range(len(row)):
+            if row[i][23]<=30 and str(row[i][4]) == str(depot):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
+
+    elif region != "All" and depot != "All":
+        for i in range(len(row)):
+            if row[i][23]<=30 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
 
 
-@app.get("/less100")
-async def less100():
+
+
+
+@app.get("/less100/{region}/{depot}")
+async def less100(region,depot):
     count =0
-    for i in range(len(row)):
-        if row[i][23]>30 and row[i][23]<=100:
-            count = count+1
-            i=i+1
-        else:
-            i=i+1
-    return count
+    if region == "All" and depot == "All":
+        for i in range(len(row)):
+            if row[i][23]>30 and row[i][23]<=100:
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
+
+    elif region == "All" and depot != "All":
+        for i in range(len(row)):
+            if row[i][23]>30 and row[i][23]<=100 and str(row[i][4]) == str(depot):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
+
+    elif region != "All" and depot != "All":
+        for i in range(len(row)):
+            if row[i][23]>30 and row[i][23]<=100 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
 
 
-@app.get("/other")
-async def other():
+@app.get("/other/{region}/{depot}")
+async def other(region,depot):
     count =0
-    for i in range(len(row)):
-        if row[i][23]>100:
-            count = count+1
-            i=i+1
-        else:
-            i=i+1
-    return count
+    if region == "All" and depot == "All":
+        for i in range(len(row)):
+            if row[i][23]>100:
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
+
+    elif region == "All" and depot != "All":
+        for i in range(len(row)):
+            if row[i][23]>100 and str(row[i][4]) == str(depot):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
+
+    elif region != "All" and depot != "All":
+        for i in range(len(row)):
+            if row[i][23]>100 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        return count
 
 
 @app.get("/site/{siteId}")
