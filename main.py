@@ -121,12 +121,12 @@ async def det(type):
         
         for i in range(len(row)):
             if row[i][23]<=30:
-                list1 = {}
-                list1["SIte_ID"] = str(row[i][0])
-                list1["Site_Name"] = str(row[i][1])
-                list1["Site_catogary"] = str(row[i][8])
-                list1["Rank"] = str(row[i][10])
-                list2["site"+str(i)] = list1
+                list1 = []
+                list1.append(str(row[i][0]))
+                list1.append(str(row[i][1]))
+                list1.append(str(row[i][8]))
+                list1.append(str(row[i][10]))
+                list2.append(list1)
                 
             
             
@@ -148,12 +148,12 @@ async def det(type):
         
         for i in range(len(row)):
             if row[i][23]>100:
-                list1 = {}
-                list1["SIte_ID"] = str(row[i][0])
-                list1["Site_Name"] = str(row[i][1])
-                list1["Site_catogary"] = str(row[i][8])
-                list1["Rank"] = str(row[i][10])
-                list2["site"+str(i)] = list1
+                list1 = []
+                list1.append(str(row[i][0]))
+                list1.append(str(row[i][1]))
+                list1.append(str(row[i][8]))
+                list1.append(str(row[i][10]))
+                list2.append(list1)
                 
             
 
