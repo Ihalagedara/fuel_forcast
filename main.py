@@ -117,7 +117,7 @@ async def site(siteId):
 async def det(type):
     
     list2 = []
-    if type == "urgent":
+    if type == "critical":
         
         for i in range(len(row)):
             if row[i][23]<=30:
@@ -125,13 +125,14 @@ async def det(type):
                 list1.append(str(row[i][0]))
                 list1.append(str(row[i][1]))
                 list1.append(str(row[i][8]))
-                list1.append(str(row[i][10]))
+                list1.append(str(row[i][9]))
+                list1.append(str(row[i][4]))
                 list2.append(list1)
                 
             
             
 
-    elif type == "critical":
+    elif type == "urgent":
        
         for i in range(len(row)):
             if row[i][23]>30 & row[i][23]<=100:
@@ -139,7 +140,8 @@ async def det(type):
                 list1.append(str(row[i][0]))
                 list1.append(str(row[i][1]))
                 list1.append(str(row[i][8]))
-                list1.append(str(row[i][10]))
+                list1.append(str(row[i][9]))
+                list1.append(str(row[i][4]))
                 list2.append(list1)
                 
             
@@ -152,7 +154,8 @@ async def det(type):
                 list1.append(str(row[i][0]))
                 list1.append(str(row[i][1]))
                 list1.append(str(row[i][8]))
-                list1.append(str(row[i][10]))
+                list1.append(str(row[i][9]))
+                list1.append(str(row[i][4]))
                 list2.append(list1)
                 
             
