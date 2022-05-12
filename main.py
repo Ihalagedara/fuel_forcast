@@ -254,16 +254,16 @@ async def det(type):
 
 @app.get("/regions")
 async def regions():
-    list = []
+    list1 = []
     for i in range(len(row)):
         list.append(row[i][3])
-    mylist = list(dict.fromkeys(list))
-    return mylist
+    list1 = list(set(list1)) 
+    return list1
 
 @app.get("/deports")
 async def regions():
-    list = []
+    list1 = []
     for i in range(len(row)):
         list.append(row[i][4])
-    mylist = list(dict.fromkeys(list))
-    return mylist
+    list1 = list(set(list1)) 
+    return list1
