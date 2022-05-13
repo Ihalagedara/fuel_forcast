@@ -200,8 +200,8 @@ async def site(siteId):
     
     return details
 
-@app.get("/details/{type}/{region}/{deport}/{gen}")
-async def det(type,region,deport,gen):
+@app.get("/details/{type}/{region}/{deport}")
+async def det(type,region,deport):
     
     list2 = []
     if type == "critical":
