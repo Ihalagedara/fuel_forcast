@@ -354,7 +354,7 @@ async def det(type,region,deport,gen):
         if type == "critical":
             if region == "All" and deport == "All":
                 for i in range(len(row)):
-                    if row[i][23]<=30 and row[i][6]:
+                    if row[i][23]<=30 and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
@@ -365,7 +365,7 @@ async def det(type,region,deport,gen):
 
             if region == "All" and deport != "All":
                 for i in range(len(row)):
-                    if row[i][23]<=30 and row[i][4] == deport and row[i][6]:
+                    if row[i][23]<=30 and row[i][4] == deport and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
@@ -376,7 +376,7 @@ async def det(type,region,deport,gen):
 
             if region != "All" and deport == "All":
                 for i in range(len(row)):
-                    if row[i][23]<=30 and row[i][3] == region and row[i][6]:
+                    if row[i][23]<=30 and row[i][3] == region and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
@@ -387,7 +387,7 @@ async def det(type,region,deport,gen):
 
             if region != "All" and deport != "All":
                 for i in range(len(row)):
-                    if row[i][23]<=30 and row[i][3] == region and row[i][4] == deport and row[i][6]:
+                    if row[i][23]<=30 and row[i][3] == region and row[i][4] == deport and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
@@ -406,7 +406,7 @@ async def det(type,region,deport,gen):
         
             if region == "All" and deport == "All":
                 for i in range(len(row)):
-                    if row[i][23]>30 and row[i][23]<=100 and row[i][6]:
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
@@ -417,7 +417,7 @@ async def det(type,region,deport,gen):
 
             if region == "All" and deport != "All":
                 for i in range(len(row)):
-                    if row[i][23]>30 and row[i][23]<=100 and row[i][4] == deport and row[i][6]:
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][4] == deport and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
@@ -428,7 +428,7 @@ async def det(type,region,deport,gen):
 
             if region != "All" and deport == "All":
                 for i in range(len(row)):
-                    if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region and row[i][6]:
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
@@ -439,7 +439,7 @@ async def det(type,region,deport,gen):
 
             if region != "All" and deport != "All":
                 for i in range(len(row)):
-                    if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region and row[i][4] == deport and row[i][6]:
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region and row[i][4] == deport and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
@@ -453,7 +453,7 @@ async def det(type,region,deport,gen):
         elif type == "other":
             
             if region == "All" and deport == "All":
-                for i in range(len(row)) and row[i][6]:
+                for i in range(len(row)) and row[i][6] == gen:
                     if row[i][23]>100:
                         list1 = []
                         list1.append(str(row[i][0]))
@@ -465,7 +465,7 @@ async def det(type,region,deport,gen):
 
             if region == "All" and deport != "All":
                 for i in range(len(row)):
-                    if row[i][23]>100 and row[i][4] == deport and row[i][6]:
+                    if row[i][23]>100 and row[i][4] == deport and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
@@ -476,7 +476,7 @@ async def det(type,region,deport,gen):
 
             if region != "All" and deport == "All":
                 for i in range(len(row)):
-                    if row[i][23]>100 and row[i][3] == region and row[i][6]:
+                    if row[i][23]>100 and row[i][3] == region and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
@@ -487,7 +487,7 @@ async def det(type,region,deport,gen):
 
             if region != "All" and deport != "All":
                 for i in range(len(row)):
-                    if row[i][23]>100 and row[i][3] == region and row[i][4] == deport and row[i][6]:
+                    if row[i][23]>100 and row[i][3] == region and row[i][4] == deport and row[i][6] == gen:
                         list1 = []
                         list1.append(str(row[i][0]))
                         list1.append(str(row[i][1]))
