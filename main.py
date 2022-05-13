@@ -200,22 +200,57 @@ async def site(siteId):
     
     return details
 
-@app.get("/details/{type}")
-async def det(type):
+@app.get("/details/{type}/{region}/{deport}")
+async def det(type,region,deport):
     
     list2 = []
     if type == "critical":
+        if region == "All" and deport == "All":
+            for i in range(len(row)):
+                if row[i][23]<=30:
+                    list1 = []
+                    list1.append(str(row[i][0]))
+                    list1.append(str(row[i][1]))
+                    list1.append(str(row[i][8]))
+                    list1.append(str(row[i][9]))
+                    
+                    list2.append(list1)
+
+        if region == "All" and deport != "All":
+            for i in range(len(row)):
+                if row[i][23]<=30 and row[i][4] == deport:
+                    list1 = []
+                    list1.append(str(row[i][0]))
+                    list1.append(str(row[i][1]))
+                    list1.append(str(row[i][8]))
+                    list1.append(str(row[i][9]))
+                    
+                    list2.append(list1)
+
+        if region != "All" and deport == "All":
+            for i in range(len(row)):
+                if row[i][23]<=30 and row[i][3] == region:
+                    list1 = []
+                    list1.append(str(row[i][0]))
+                    list1.append(str(row[i][1]))
+                    list1.append(str(row[i][8]))
+                    list1.append(str(row[i][9]))
+                    
+                    list2.append(list1)
+
+        if region != "All" and deport != "All":
+            for i in range(len(row)):
+                if row[i][23]<=30 and row[i][3] == region and row[i][4] == deport:
+                    list1 = []
+                    list1.append(str(row[i][0]))
+                    list1.append(str(row[i][1]))
+                    list1.append(str(row[i][8]))
+                    list1.append(str(row[i][9]))
+                    
+                    list2.append(list1)
+
         
-        for i in range(len(row)):
-            if row[i][23]<=30:
-                list1 = []
-                list1.append(str(row[i][0]))
-                list1.append(str(row[i][1]))
-                list1.append(str(row[i][8]))
-                list1.append(str(row[i][9]))
-                list1.append(str(row[i][4]))
-                list1.append(str(row[i][3]))
-                list2.append(list1)
+
                 
             
             
