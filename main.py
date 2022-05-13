@@ -200,155 +200,301 @@ async def site(siteId):
     
     return details
 
-@app.get("/details/{type}/{region}/{deport}")
-async def det(type,region,deport):
+@app.get("/details/{type}/{region}/{deport}/{gen}")
+async def det(type,region,deport,gen):
     
     list2 = []
-    if type == "critical":
-        if region == "All" and deport == "All":
-            for i in range(len(row)):
-                if row[i][23]<=30:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
-                    
-                    list2.append(list1)
+    if gen == "All":
+        if type == "critical":
+            if region == "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]<=30:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
 
-        if region == "All" and deport != "All":
-            for i in range(len(row)):
-                if row[i][23]<=30 and row[i][4] == deport:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
-                    
-                    list2.append(list1)
+            if region == "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]<=30 and row[i][4] == deport:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
 
-        if region != "All" and deport == "All":
-            for i in range(len(row)):
-                if row[i][23]<=30 and row[i][3] == region:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
-                    
-                    list2.append(list1)
+            if region != "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]<=30 and row[i][3] == region:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
 
-        if region != "All" and deport != "All":
-            for i in range(len(row)):
-                if row[i][23]<=30 and row[i][3] == region and row[i][4] == deport:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
-                    
-                    list2.append(list1)
+            if region != "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]<=30 and row[i][3] == region and row[i][4] == deport:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
 
+            
+
+                    
+                
+                
+
+        elif type == "urgent":
         
+            if region == "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]>30 and row[i][23]<=100:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
 
+            if region == "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][4] == deport:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region != "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region != "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region and row[i][4] == deport:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+                    
                 
+
+        elif type == "other":
             
+            if region == "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]>100:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region == "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]>100 and row[i][4] == deport:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region != "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]>100 and row[i][3] == region:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region != "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]>100 and row[i][3] == region and row[i][4] == deport:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+    if gen!="All":
+        if type == "critical":
+            if region == "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]<=30 and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region == "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]<=30 and row[i][4] == deport and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region != "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]<=30 and row[i][3] == region and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region != "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]<=30 and row[i][3] == region and row[i][4] == deport and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
             
 
-    elif type == "urgent":
-       
-        if region == "All" and deport == "All":
-            for i in range(len(row)):
-                if row[i][23]>30 and row[i][23]<=100:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
                     
-                    list2.append(list1)
-
-        if region == "All" and deport != "All":
-            for i in range(len(row)):
-                if row[i][23]>30 and row[i][23]<=100 and row[i][4] == deport:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
-                    
-                    list2.append(list1)
-
-        if region != "All" and deport == "All":
-            for i in range(len(row)):
-                if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
-                    
-                    list2.append(list1)
-
-        if region != "All" and deport != "All":
-            for i in range(len(row)):
-                if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region and row[i][4] == deport:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
-                    
-                    list2.append(list1)
                 
-            
+                
 
-    elif type == "other":
+        elif type == "urgent":
         
-        if region == "All" and deport == "All":
-            for i in range(len(row)):
-                if row[i][23]>100:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
-                    
-                    list2.append(list1)
+            if region == "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
 
-        if region == "All" and deport != "All":
-            for i in range(len(row)):
-                if row[i][23]>100 and row[i][4] == deport:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
-                    
-                    list2.append(list1)
+            if region == "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][4] == deport and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
 
-        if region != "All" and deport == "All":
-            for i in range(len(row)):
-                if row[i][23]>100 and row[i][3] == region:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
-                    
-                    list2.append(list1)
+            if region != "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
 
-        if region != "All" and deport != "All":
-            for i in range(len(row)):
-                if row[i][23]>100 and row[i][3] == region and row[i][4] == deport:
-                    list1 = []
-                    list1.append(str(row[i][0]))
-                    list1.append(str(row[i][1]))
-                    list1.append(str(row[i][8]))
-                    list1.append(str(row[i][9]))
+            if region != "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region and row[i][4] == deport and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
                     
-                    list2.append(list1)
                 
+
+        elif type == "other":
+            
+            if region == "All" and deport == "All":
+                for i in range(len(row)) and row[i][6]:
+                    if row[i][23]>100:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region == "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]>100 and row[i][4] == deport and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region != "All" and deport == "All":
+                for i in range(len(row)):
+                    if row[i][23]>100 and row[i][3] == region and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)
+
+            if region != "All" and deport != "All":
+                for i in range(len(row)):
+                    if row[i][23]>100 and row[i][3] == region and row[i][4] == deport and row[i][6]:
+                        list1 = []
+                        list1.append(str(row[i][0]))
+                        list1.append(str(row[i][1]))
+                        list1.append(str(row[i][8]))
+                        list1.append(str(row[i][9]))
+                        
+                        list2.append(list1)       
             
 
     return list2
