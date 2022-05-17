@@ -368,3 +368,63 @@ async def regions():
         list.append(row[i][4])
     list1 = list(set(list1)) 
     return list1
+
+@app.get("/chart")
+async def charts():
+    chart = {}
+    count = 0
+    for i in range(len(row)):
+        if row[i][23]<=30:
+            count = count+1
+            i=i+1
+        else:
+            i=i+1
+    chart["less_30"] = count 
+
+    count = 0
+    for i in range(len(row)):
+        if row[i][23]>30 and row[i][23]<=60:
+            count = count+1
+            i=i+1
+        else:
+            i=i+1
+    chart["Between_30_60"] = count
+
+    count = 0
+    for i in range(len(row)):
+        if row[i][23]>60 and row[i][23]<=90:
+            count = count+1
+            i=i+1
+        else:
+            i=i+1
+    chart["Between_60_90"] = count
+
+    count = 0
+    for i in range(len(row)):
+        if row[i][23]>90 and row[i][23]<=120:
+            count = count+1
+            i=i+1
+        else:
+            i=i+1
+    chart["Between_90_120"] = count
+
+    count = 0
+    for i in range(len(row)):
+        if row[i][23]>120 and row[i][23]<=150:
+            count = count+1
+            i=i+1
+        else:
+            i=i+1
+    chart["Between_120_150"]
+
+    count = 0
+    for i in range(len(row)):
+        if row[i][23]>150:
+            count = count+1
+            i=i+1
+        else:
+            i=i+1
+    chart["More_150"] = count
+
+    return chart
+        
