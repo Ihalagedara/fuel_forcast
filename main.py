@@ -18,7 +18,7 @@ with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE=
 
 keys = ["Site_ID","Site_Name","Region","New_Region","Depot","Tower_Category","Energy_category","Entity","Site_category","Rectification_Rank","New_Rectification_Rank","Site_Cabin_Type","STBG_FTG_Status","Gen_brand_1","Gen_Capacity_1","Gen_Brand_2","Gen_Capacity_2","Fuel_Tank_Capacity","FuelConsumption_Fuel_consumption","FuelFilled1_Date","FuelFilled1_Filled_Fuel_Qty_L","RunningHr_TotalGenRunning","RegionaUpdate_STBG_FTG_Status","Remaining_Fuel_Quantity","Required_Fuel_Amount_for_Next_5_Day","Next_Filling_Date","Remark","RegionaUpdate_STBG_FTG_Status2"]
 
-
+key_chart = ["less_30","Between_30_60","Between_60_90","Between_90_120","Between _120_150","More_150"]
 
 
 class details(BaseModel):
@@ -379,7 +379,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart["less_30"] = count 
+    chart[key_chart[0]] = count 
 
     count = 0
     for i in range(len(row)):
@@ -388,7 +388,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart["Between_30_60"] = count
+    chart[key_chart[1]] = count
 
     count = 0
     for i in range(len(row)):
@@ -397,7 +397,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart["Between_60_90"] = count
+    chart[key_chart[2]] = count
 
     count = 0
     for i in range(len(row)):
@@ -406,7 +406,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart["Between_90_120"] = count
+    chart[key_chart[3]] = count
 
     count = 0
     for i in range(len(row)):
@@ -415,7 +415,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart["Between_120_150"]
+    chart[key_chart[4]] = count
 
     count = 0
     for i in range(len(row)):
@@ -424,7 +424,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart["More_150"] = count
+    chart[key_chart[5]] = count
 
     return chart
         
