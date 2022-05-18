@@ -360,7 +360,7 @@ async def regions():
     for i in range(len(row)):
         list1 = []
         list1.append(str(row[i][0]))
-        list1.append(str(row[i][4]))
+        list1.append(str(row[i][1]))
         list2.append(list1)
     return list2
 
@@ -368,7 +368,7 @@ async def regions():
 async def regions():
     list1 = []
     for i in range(len(row)):
-        list1.append(row[i][4])
+        list1.append(row[i][1])
     
     return list1
 
