@@ -65,7 +65,7 @@ async def less30(region,depot):
     count =0
     if region == "All" and depot == "All":
         for i in range(len(row)):
-            if row[i][23]<=30:
+            if int(int(row[i][23]))<=30:
                 count = count+1
                 i=i+1
             else:
@@ -74,7 +74,7 @@ async def less30(region,depot):
 
     elif region == "All" and depot != "All":
         for i in range(len(row)):
-            if row[i][23]<=30 and str(row[i][4]) == str(depot):
+            if int(int(row[i][23]))<=30 and str(row[i][4]) == str(depot):
                 count = count+1
                 i=i+1
             else:
@@ -83,7 +83,7 @@ async def less30(region,depot):
 
     elif region != "All" and depot == "All":
         for i in range(len(row)):
-            if  row[i][23]<=30 and str(row[i][3]) == str(region):
+            if  int(int(row[i][23]))<=30 and str(row[i][3]) == str(region):
                 count = count+1
                 i=i+1
             else:
@@ -92,7 +92,7 @@ async def less30(region,depot):
 
     elif region != "All" and depot != "All":
         for i in range(len(row)):
-            if row[i][23]<=30 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
+            if int(int(row[i][23]))<=30 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
                 count = count+1
                 i=i+1
             else:
@@ -108,7 +108,7 @@ async def less100(region,depot):
     count =0
     if region == "All" and depot == "All":
         for i in range(len(row)):
-            if row[i][23]>30 and row[i][23]<=100:
+            if int(int(row[i][23]))>30 and int(int(row[i][23]))<=100:
                 count = count+1
                 i=i+1
             else:
@@ -117,7 +117,7 @@ async def less100(region,depot):
 
     elif region == "All" and depot != "All":
         for i in range(len(row)):
-            if row[i][23]>30 and row[i][23]<=100 and str(row[i][4]) == str(depot):
+            if int(int(row[i][23]))>30 and int(int(row[i][23]))<=100 and str(row[i][4]) == str(depot):
                 count = count+1
                 i=i+1
             else:
@@ -126,7 +126,7 @@ async def less100(region,depot):
 
     elif region != "All" and depot == "All":
         for i in range(len(row)):
-            if row[i][23]>30 and row[i][23]<=100 and str(row[i][3]) == str(region):
+            if int(int(row[i][23]))>30 and int(int(row[i][23]))<=100 and str(row[i][3]) == str(region):
                 count = count+1
                 i=i+1
             else:
@@ -135,7 +135,7 @@ async def less100(region,depot):
 
     elif region != "All" and depot != "All":
         for i in range(len(row)):
-            if row[i][23]>30 and row[i][23]<=100 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
+            if int(int(row[i][23]))>30 and int(int(row[i][23]))<=100 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
                 count = count+1
                 i=i+1
             else:
@@ -148,7 +148,7 @@ async def other(region,depot):
     count =0
     if region == "All" and depot == "All":
         for i in range(len(row)):
-            if row[i][23]>100:
+            if int(int(row[i][23]))>100:
                 count = count+1
                 i=i+1
             else:
@@ -157,7 +157,7 @@ async def other(region,depot):
 
     elif region == "All" and depot != "All":
         for i in range(len(row)):
-            if row[i][23]>100 and str(row[i][4]) == str(depot):
+            if int(int(row[i][23]))>100 and str(row[i][4]) == str(depot):
                 count = count+1
                 i=i+1
             else:
@@ -166,7 +166,7 @@ async def other(region,depot):
 
     elif region != "All" and depot == "All":
         for i in range(len(row)):
-            if row[i][23]>100 and str(row[i][3]) == str(region):
+            if int(int(row[i][23]))>100 and str(row[i][3]) == str(region):
                 count = count+1
                 i=i+1
             else:
@@ -175,7 +175,7 @@ async def other(region,depot):
 
     elif region != "All" and depot != "All":
         for i in range(len(row)):
-            if row[i][23]>100 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
+            if int(int(row[i][23]))>100 and str(row[i][4]) == str(depot) and str(row[i][3]) == str(region):
                 count = count+1
                 i=i+1
             else:
@@ -207,7 +207,7 @@ async def det(type,region,deport):
     if type == "critical":
         if region == "All" and deport == "All":
             for i in range(len(row)):
-                if row[i][23]<=30:
+                if int(int(row[i][23]))<=30:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -218,7 +218,7 @@ async def det(type,region,deport):
 
         if region == "All" and deport != "All":
             for i in range(len(row)):
-                if row[i][23]<=30 and row[i][4] == deport:
+                if int(int(row[i][23]))<=30 and row[i][4] == deport:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -229,7 +229,7 @@ async def det(type,region,deport):
 
         if region != "All" and deport == "All":
             for i in range(len(row)):
-                if row[i][23]<=30 and row[i][3] == region:
+                if int(int(row[i][23]))<=30 and row[i][3] == region:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -240,7 +240,7 @@ async def det(type,region,deport):
 
         if region != "All" and deport != "All":
             for i in range(len(row)):
-                if row[i][23]<=30 and row[i][3] == region and row[i][4] == deport:
+                if int(int(row[i][23]))<=30 and row[i][3] == region and row[i][4] == deport:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -259,7 +259,7 @@ async def det(type,region,deport):
        
         if region == "All" and deport == "All":
             for i in range(len(row)):
-                if row[i][23]>30 and row[i][23]<=100:
+                if int(int(row[i][23]))>30 and int(int(row[i][23]))<=100:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -270,7 +270,7 @@ async def det(type,region,deport):
 
         if region == "All" and deport != "All":
             for i in range(len(row)):
-                if row[i][23]>30 and row[i][23]<=100 and row[i][4] == deport:
+                if int(int(row[i][23]))>30 and int(int(row[i][23]))<=100 and row[i][4] == deport:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -281,7 +281,7 @@ async def det(type,region,deport):
 
         if region != "All" and deport == "All":
             for i in range(len(row)):
-                if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region:
+                if int(int(row[i][23]))>30 and int(int(row[i][23]))<=100 and row[i][3] == region:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -292,7 +292,7 @@ async def det(type,region,deport):
 
         if region != "All" and deport != "All":
             for i in range(len(row)):
-                if row[i][23]>30 and row[i][23]<=100 and row[i][3] == region and row[i][4] == deport:
+                if int(int(row[i][23]))>30 and int(int(row[i][23]))<=100 and row[i][3] == region and row[i][4] == deport:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -307,7 +307,7 @@ async def det(type,region,deport):
         
         if region == "All" and deport == "All":
             for i in range(len(row)):
-                if row[i][23]>100:
+                if int(int(row[i][23]))>100:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -318,7 +318,7 @@ async def det(type,region,deport):
 
         if region == "All" and deport != "All":
             for i in range(len(row)):
-                if row[i][23]>100 and row[i][4] == deport:
+                if int(int(row[i][23]))>100 and row[i][4] == deport:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -329,7 +329,7 @@ async def det(type,region,deport):
 
         if region != "All" and deport == "All":
             for i in range(len(row)):
-                if row[i][23]>100 and row[i][3] == region:
+                if int(int(row[i][23]))>100 and row[i][3] == region:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -340,7 +340,7 @@ async def det(type,region,deport):
 
         if region != "All" and deport != "All":
             for i in range(len(row)):
-                if row[i][23]>100 and row[i][3] == region and row[i][4] == deport:
+                if int(int(row[i][23]))>100 and row[i][3] == region and row[i][4] == deport:
                     list1 = []
                     list1.append(str(row[i][0]))
                     list1.append(str(row[i][1]))
@@ -377,7 +377,7 @@ async def charts():
     chart =[]
     count = 0
     for i in range(len(row)):
-        if row[i][23]<=30:
+        if int(int(row[i][23]))<=30:
             count = count+1
             i=i+1
         else:
@@ -386,7 +386,7 @@ async def charts():
 
     count = 0
     for i in range(len(row)):
-        if row[i][23]>30 and row[i][23]<=60:
+        if int(int(row[i][23]))>30 and int(int(row[i][23]))<=60:
             count = count+1
             i=i+1
         else:
@@ -395,7 +395,7 @@ async def charts():
 
     count = 0
     for i in range(len(row)):
-        if row[i][23]>60 and row[i][23]<=90:
+        if int(int(row[i][23]))>60 and int(int(row[i][23]))<=90:
             count = count+1
             i=i+1
         else:
@@ -404,7 +404,7 @@ async def charts():
 
     count = 0
     for i in range(len(row)):
-        if row[i][23]>90 and row[i][23]<=120:
+        if int(int(row[i][23]))>90 and int(int(row[i][23]))<=120:
             count = count+1
             i=i+1
         else:
@@ -413,7 +413,7 @@ async def charts():
 
     count = 0
     for i in range(len(row)):
-        if row[i][23]>120 and row[i][23]<=150:
+        if int(int(row[i][23]))>120 and int(int(row[i][23]))<=150:
             count = count+1
             i=i+1
         else:
@@ -422,7 +422,7 @@ async def charts():
 
     count = 0
     for i in range(len(row)):
-        if row[i][23]>150:
+        if int(int(row[i][23]))>150:
             count = count+1
             i=i+1
         else:
