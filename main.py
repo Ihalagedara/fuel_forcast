@@ -355,18 +355,21 @@ async def det(type,region,deport):
 
 @app.get("/regions")
 async def regions():
-    list1 = []
+    
+    list2 = []
     for i in range(len(row)):
-        list.append(row[i][3])
-    list1 = list(set(list1)) 
-    return list1
+        list1 = []
+        list1.append(str(row[i][0]))
+        list1.append(str(row[i][4]))
+        list2.append(list1)
+    return list2
 
 @app.get("/deports")
 async def regions():
     list1 = []
     for i in range(len(row)):
-        list.append(row[i][4])
-    list1 = list(set(list1)) 
+        list1.append(row[i][4])
+    
     return list1
 
 @app.get("/chart")
