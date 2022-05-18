@@ -371,7 +371,7 @@ async def regions():
 
 @app.get("/chart")
 async def charts():
-    chart = {}
+    chart =[]
     count = 0
     for i in range(len(row)):
         if row[i][23]<=30:
@@ -379,7 +379,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart[key_chart[0]] = count 
+    chart.append(count)
 
     count = 0
     for i in range(len(row)):
@@ -388,7 +388,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart[key_chart[1]] = count
+    chart.append(count)
 
     count = 0
     for i in range(len(row)):
@@ -397,7 +397,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart[key_chart[2]] = count
+    chart.append(count)
 
     count = 0
     for i in range(len(row)):
@@ -406,7 +406,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart[key_chart[3]] = count
+    chart.append(count)
 
     count = 0
     for i in range(len(row)):
@@ -415,7 +415,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart[key_chart[4]] = count
+    chart.append(count)
 
     count = 0
     for i in range(len(row)):
@@ -424,7 +424,7 @@ async def charts():
             i=i+1
         else:
             i=i+1
-    chart[key_chart[5]] = count
+    chart.append(count)
 
     return chart
         
