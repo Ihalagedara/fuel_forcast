@@ -372,62 +372,231 @@ async def regions():
     
     return list1
 
-@app.get("/chart")
-async def charts():
+@app.get("/chart/{region}/{depot}")
+async def charts(region,depot):
     chart =[]
     count = 0
-    for i in range(len(row)):
-        if int(int(row[i][23]))<=30:
-            count = count+1
-            i=i+1
-        else:
-            i=i+1
-    chart.append(count)
+    if region == "All" and depot=="All":
+        for i in range(len(row)):
+            if int(int(row[i][23]))<=30:
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
 
-    count = 0
-    for i in range(len(row)):
-        if int(int(row[i][23]))>30 and int(int(row[i][23]))<=60:
-            count = count+1
-            i=i+1
-        else:
-            i=i+1
-    chart.append(count)
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>30 and int(int(row[i][23]))<=60:
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
 
-    count = 0
-    for i in range(len(row)):
-        if int(int(row[i][23]))>60 and int(int(row[i][23]))<=90:
-            count = count+1
-            i=i+1
-        else:
-            i=i+1
-    chart.append(count)
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>60 and int(int(row[i][23]))<=90:
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
 
-    count = 0
-    for i in range(len(row)):
-        if int(int(row[i][23]))>90 and int(int(row[i][23]))<=120:
-            count = count+1
-            i=i+1
-        else:
-            i=i+1
-    chart.append(count)
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>90 and int(int(row[i][23]))<=120:
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
 
-    count = 0
-    for i in range(len(row)):
-        if int(int(row[i][23]))>120 and int(int(row[i][23]))<=150:
-            count = count+1
-            i=i+1
-        else:
-            i=i+1
-    chart.append(count)
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>120 and int(int(row[i][23]))<=150:
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
 
-    count = 0
-    for i in range(len(row)):
-        if int(int(row[i][23]))>150:
-            count = count+1
-            i=i+1
-        else:
-            i=i+1
-    chart.append(count)
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>150:
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
 
-    return chart
-        
+        return chart
+    
+    if region != "All" and depot=="All":
+        for i in range(len(row)):
+            if int(int(row[i][23]))<=30 and region == str(row[i][3]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>30 and int(int(row[i][23]))<=60 and region == str(row[i][3]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>60 and int(int(row[i][23]))<=90 and region == str(row[i][3]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>90 and int(int(row[i][23]))<=120 and region == str(row[i][3]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>120 and int(int(row[i][23]))<=150 and region == str(row[i][3]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>150 and region == str(row[i][3]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        return chart
+
+    if region == "All" and depot!="All":
+        for i in range(len(row)):
+            if int(int(row[i][23]))<=30 and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>30 and int(int(row[i][23]))<=60 and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>60 and int(int(row[i][23]))<=90 and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>90 and int(int(row[i][23]))<=120 and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>120 and int(int(row[i][23]))<=150 and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>150 and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        return chart
+
+    if region != "All" and depot!="All":
+        for i in range(len(row)):
+            if int(int(row[i][23]))<=30 and region == str(row[i][3]) and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>30 and int(int(row[i][23]))<=60 and region == str(row[i][3]) and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>60 and int(int(row[i][23]))<=90 and region == str(row[i][3]) and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>90 and int(int(row[i][23]))<=120 and region == str(row[i][3]) and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>120 and int(int(row[i][23]))<=150 and region == str(row[i][3]) and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        count = 0
+        for i in range(len(row)):
+            if int(int(row[i][23]))>150 and region == str(row[i][3]) and depot == str(row[i][4]):
+                count = count+1
+                i=i+1
+            else:
+                i=i+1
+        chart.append(count)
+
+        return chart
+
