@@ -5,9 +5,9 @@ import pyodbc
 
 
 server = 'shamil.database.windows.net'
-database = 'fuelforcast'
-username = 'Shamil'
-password = 'Bandara@123'   
+database = '**********'
+username = '**********'
+password = '**********'   
 driver= '{ODBC Driver 17 for SQL Server}'
 
 with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
